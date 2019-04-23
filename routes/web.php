@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('/calendario', 'calendario');
@@ -18,8 +20,6 @@ Route::group(['middleware' => 'auth'], function () {
         return view('welcome');
     });
 });
-
-Auth::routes(['verify' => true]);
 
 Route::get('profile', function () {
     // Only verified users may enter...
